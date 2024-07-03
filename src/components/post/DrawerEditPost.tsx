@@ -12,24 +12,30 @@ import {
 } from "@/components/ui/drawer"
 
 import { Button } from "@/components/ui/button";
-import FormPost from "./FormPost";
+import FormEditPost from "./FormEditPost";
 import { useState } from "react";
 
-const DrawerPost = () => {
+type DrawerEditPostProps = {
+    postTitle: string;
+    postDescription: string;
+    postCategory: number
+}
+
+const DrawerEditPost = ({ postTitle,postDescription,postCategory }: DrawerEditPostProps) => {
     const [open, setOpen] = useState(false);
 
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
                 <Button className="bg-cprimary" variant="default">
-                    Ajouter un post
+                    Modifier le post
                 </Button>
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader>
-                    <DrawerTitle className="text-center">Ajouter un post</DrawerTitle>
+                    <DrawerTitle className="text-center">Modifier la post : {postTitle}</DrawerTitle>
                     <DrawerDescription className="text-center">Renseignez l'enssemble des champs.</DrawerDescription>
-                    <FormPost setOpen={setOpen} />
+                    <FormEditPost setOpen={setOpen} postTitle={postTitle} postDescription={postDescription} postCategory={postCategory}/>
                 </DrawerHeader>
                 <DrawerFooter>
                     <DrawerClose>
@@ -41,4 +47,4 @@ const DrawerPost = () => {
     );
 }
 
-export default DrawerPost;
+export default DrawerEditPost;

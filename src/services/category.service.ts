@@ -1,4 +1,4 @@
-import { CategoryCreateDTO } from "@/types/category";
+import { CategoryCreateDTO, CategoryUpdateDTO } from "@/types/category";
 import { CATEGORY_ENDPOINT } from "@/utils/constants";
 
 export const fetchAllCategories = async () => {
@@ -20,6 +20,18 @@ export const createCategory = async (createCategoryDto: CategoryCreateDTO) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(createCategoryDto)
+    });
+    const data = await response.json();
+    return data;
+}
+
+export const updateCategory = async (id: string, updateCategoryDTO: CategoryUpdateDTO) => {
+    const response = await fetch(`${CATEGORY_ENDPOINT}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updateCategoryDTO)
     });
     const data = await response.json();
     return data;

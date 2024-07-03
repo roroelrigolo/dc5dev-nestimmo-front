@@ -21,8 +21,8 @@ const DrawerCategory = () => {
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button variant="default">
-                    Create new category
+                <Button className="bg-cprimary" variant="default">
+                    Ajouter une catégorie
                 </Button>
             </DrawerTrigger>
             <DrawerContent>
@@ -33,7 +33,7 @@ const DrawerCategory = () => {
                 </DrawerHeader>
                 <DrawerFooter>
                     <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant="outline" className="bg-black text-cprimary w-full">Annuler</Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>

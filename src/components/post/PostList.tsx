@@ -2,6 +2,7 @@
 
 import { fetchAllPosts } from "@/services/post.service";
 import { useQuery } from "@tanstack/react-query";
+import DrawerPost from "./DrawerPost";
 import Link from "next/link";
 
 const PostList = () => {
@@ -14,18 +15,22 @@ const PostList = () => {
 
     return ( 
         <div>
-            <h2 className="text-4xl font-bold my-5 text-cyan-700">
-                Post list
-            </h2>
+            <div className="flex justify-between items-center">
+                <h2 className="text-4xl font-bold my-5 text-cprimary">
+                    Liste des posts
+                </h2>
+                <DrawerPost />
+            </div>
+  
 
             <div className="grid grid-cols-4 gap-2">
                 {data?.map((post: any) => (
-                    <div key={post.id} className="bg-white rounded-lg shadow-md p-4">
-                        <Link href={`/posts/${post.id}`}>
+                    <Link href={`/posts/${post.id}`}>
+                        <div key={post.id} className="bg-cprimary hover:bg-cprimary/50 shadow-lg text-white rounded-lg p-4">
                             <h3 className="text-lg font-medium mb-2">{post.title}</h3>
-                        </Link>
-                        <p className="text-gray-500">{post.description}</p>
-                    </div>
+                            <p>{post.description}</p>
+                        </div>    
+                    </Link>
                 ))}
             </div>
         </div>
